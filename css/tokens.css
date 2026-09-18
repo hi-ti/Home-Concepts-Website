@@ -1,0 +1,35 @@
+:root {
+  /* Color */
+  --color-cream: #F6F1E7;
+  --color-ink: #221D19;
+  --color-ink-muted: #6E645A;
+  --color-dark-bg: #000000;
+  --color-dark-text: #F6F1E7;
+  --color-dark-text-muted: #B8AC9C;
+  --color-accent: #F6C101;
+  --color-card-fill: #EAE1D0;
+  --color-hairline-on-dark: rgba(246, 241, 231, 0.16);
+  --color-hairline-on-dark-strong: rgba(246, 241, 231, 0.18);
+  --color-border-on-dark: rgba(246, 241, 231, 0.5);
+  --color-scrim: 28, 24, 21; /* rgb triplet used in rgba() scrims */
+
+  /* Type */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --fs-eyebrow: 0.7188rem;   /* 11.5px */
+  --ls-eyebrow: 0.1rem;      /* ~1.6px tracking */
+
+  /* Spacing */
+  --section-pad-mobile: 24px;
+  --section-pad-tablet: 48px;
+  --section-pad-desktop: 100px;
+  --container-max: 1240px;
+
+  /* Radius */
+  --radius-card: 2px;
+  --radius-button: 3px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+}

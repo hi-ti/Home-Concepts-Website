@@ -1,0 +1,233 @@
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 26px;
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transition: transform 0.15s var(--ease-standard), background-color 0.15s var(--ease-standard), border-color 0.15s var(--ease-standard);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--solid {
+  background: var(--color-accent);
+  color: #000;
+}
+
+.btn--solid:hover {
+  background: #e0b400;
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border-on-dark);
+  color: var(--color-dark-text);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-dark-text);
+}
+
+.btn--outline-ink {
+  background: transparent;
+  border: 1px solid rgba(34, 29, 25, 0.35);
+  color: var(--color-ink);
+}
+
+.btn--outline-ink:hover {
+  border-color: var(--color-ink);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.cta-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* === Stats === */
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.stat__num {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-accent);
+}
+
+.stat__label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-dark-text-muted);
+}
+
+.stat__divider {
+  width: 1px;
+  height: 32px;
+  background: var(--color-hairline-on-dark-strong);
+  margin-inline: 12px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 400px) {
+  .stat__num {
+    font-size: 1.5rem;
+  }
+}
+
+/* === Nav === */
+.hamburger {
+  display: inline-block;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.2s var(--ease-standard), opacity 0.2s var(--ease-standard);
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+
+[aria-expanded="true"] .hamburger span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+[aria-expanded="true"] .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+[aria-expanded="true"] .hamburger span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* === Cards === */
+.card {
+  background: var(--color-card-fill);
+  border-radius: var(--radius-card);
+  padding: 26px;
+}
+
+.card h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-ink-muted);
+}
+
+/* === Stars === */
+.stars {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+}
+
+/* === Review card === */
+.review-card {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 1px 2px rgba(34, 29, 25, 0.06);
+}
+
+.review-card__badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  background: var(--color-card-fill);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.review-card blockquote {
+  flex: 1 1 auto;
+  margin: 0 0 28px;
+  font-size: 1rem;
+  color: var(--color-ink);
+  line-height: 1.55;
+}
+
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-card__avatar {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-card-fill);
+  color: var(--color-ink-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-card__avatar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.review-card__who {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card__name {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.review-card__role {
+  font-size: 0.8125rem;
+  color: var(--color-ink-muted);
+}
+
+@media (min-width: 768px) {
+  .review-card {
+    flex: 0 0 46%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .review-card {
+    flex: 0 0 30%;
+  }
+}
