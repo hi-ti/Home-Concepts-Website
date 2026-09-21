@@ -1,17 +1,20 @@
 export function initNav() {
+  const header = document.querySelector('.site-header');
   const toggle = document.getElementById('menuToggle');
   const drawer = document.getElementById('mobileNav');
-  if (!toggle || !drawer) return;
+  if (!header || !toggle || !drawer) return;
 
   const close = () => {
     toggle.setAttribute('aria-expanded', 'false');
     drawer.removeAttribute('data-open');
+    header.classList.remove('site-header--menu-open');
     toggle.focus();
   };
 
   const open = () => {
     toggle.setAttribute('aria-expanded', 'true');
     drawer.setAttribute('data-open', 'true');
+    header.classList.add('site-header--menu-open');
     const firstLink = drawer.querySelector('a');
     if (firstLink) firstLink.focus();
   };

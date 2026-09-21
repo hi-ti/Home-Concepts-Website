@@ -4,14 +4,16 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 44px;
-  padding-inline: 26px;
+  min-height: 40px;
+  padding: 5px 20px;
   border-radius: var(--radius-button);
+  border: 1px solid transparent;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.875rem;
   white-space: nowrap;
-  transition: transform 0.15s var(--ease-standard), background-color 0.15s var(--ease-standard), border-color 0.15s var(--ease-standard);
+  transition: transform 0.15s var(--ease-standard), background-color 0.2s var(--ease-standard),
+    border-color 0.2s var(--ease-standard), color 0.2s var(--ease-standard), box-shadow 0.2s var(--ease-standard);
 }
 
 .btn:active {
@@ -21,30 +23,36 @@
 .btn--solid {
   background: var(--color-accent);
   color: #000;
+  box-shadow: 0 0 0 0 rgba(246, 193, 1, 0);
 }
 
 .btn--solid:hover {
-  background: #e0b400;
+  background: #ffce1f;
+  box-shadow: 0 0 0 1px rgba(246, 193, 1, 0.55), 0 0 18px rgba(246, 193, 1, 0.35);
 }
 
 .btn--outline {
   background: transparent;
-  border: 1px solid var(--color-border-on-dark);
+  border-color: var(--color-border-on-dark);
   color: var(--color-dark-text);
 }
 
 .btn--outline:hover {
+  background: var(--color-dark-text);
   border-color: var(--color-dark-text);
+  color: var(--color-ink);
 }
 
 .btn--outline-ink {
   background: transparent;
-  border: 1px solid rgba(34, 29, 25, 0.35);
+  border-color: rgba(34, 29, 25, 0.35);
   color: var(--color-ink);
 }
 
 .btn--outline-ink:hover {
+  background: var(--color-ink);
   border-color: var(--color-ink);
+  color: var(--color-dark-text);
 }
 
 .btn--block {
@@ -122,27 +130,6 @@
 }
 [aria-expanded="true"] .hamburger span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
-}
-
-/* === Cards === */
-.card {
-  background: var(--color-card-fill);
-  border-radius: var(--radius-card);
-  padding: 26px;
-}
-
-.card h3 {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1.0625rem;
-  color: var(--color-ink);
-  margin-bottom: 12px;
-}
-
-.card p {
-  font-size: 0.8125rem;
-  line-height: 1.4;
-  color: var(--color-ink-muted);
 }
 
 /* === Stars === */

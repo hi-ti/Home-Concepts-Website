@@ -56,17 +56,6 @@
   color: var(--color-ink);
 }
 
-.eyebrow {
-  display: block;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 10px;
-}
-
 .section-heading {
   font-family: var(--font-display);
   font-weight: 400;

@@ -1,13 +1,13 @@
-// Data-driven "timed cards" hero showcase: crossfading background,
-// staggered text, a sliding card filmstrip, autoplay + progress bar.
-// One coordinated transition per slide change, per the reference spec.
+// Image-led hero showcase: a crossfading background with staggered text,
+// plus a compact "current / next" preview pair on the right that doubles
+// as manual navigation. Autoplay advances through the slides continuously.
 
 // Each slide points at exactly one hero photo and one gallery thumbnail —
 // drop a replacement in images/hero/ or images/gallery/ with the same
 // filename and it just works, no other sizes/formats to regenerate.
 const SLIDES = [
   {
-    eyebrow: 'Living Room · Malerkotla',
+    eyebrow: 'Living Room',
     title: 'Sheer &amp; Drape Curtains',
     desc: 'Layered curtains stitched to your windows, in fabric you choose.',
     bg: 'images/hero/hero-01.jpg',
@@ -15,7 +15,7 @@ const SLIDES = [
     cardLabel: 'Curtains',
   },
   {
-    eyebrow: 'Bedroom · Malerkotla',
+    eyebrow: 'Bedroom',
     title: 'Custom Bed Linen',
     desc: 'Sheets, quilts and cushions styled to finish the room.',
     bg: 'images/hero/hero-02.jpg',
@@ -31,7 +31,7 @@ const SLIDES = [
     cardLabel: 'Upholstery',
   },
   {
-    eyebrow: 'Living Room · Malerkotla',
+    eyebrow: 'Living Room',
     title: 'Tailored Curtains',
     desc: 'Custom curtains fitted to every window, from measure to install.',
     bg: 'images/hero/hero-04.jpg',
@@ -39,7 +39,7 @@ const SLIDES = [
     cardLabel: 'Curtains',
   },
   {
-    eyebrow: 'Bedroom · Malerkotla',
+    eyebrow: 'Bedroom',
     title: 'Curtain Nooks',
     desc: 'Sheers and drapes tailored to fit any nook or corner.',
     bg: 'images/hero/hero-05.jpg',
@@ -48,9 +48,8 @@ const SLIDES = [
   },
 ];
 
-const SLIDE_DURATION = 4000;
+const SLIDE_DURATION = 6000;
 const EXIT_DURATION = 320;
-const CLONE_SETS = 3; // render 3x the data so the card strip can slide continuously without a visible reset
 
 export function initHeroShowcase() {
   const hero = document.getElementById('hero');
@@ -59,13 +58,11 @@ export function initHeroShowcase() {
   const eyebrowEl = document.getElementById('heroEyebrow');
   const titleEl = document.getElementById('heroTitle');
   const descEl = document.getElementById('heroDesc');
-  const track = document.getElementById('heroCardsTrack');
-  const progressBar = document.getElementById('heroProgressBar');
-  const slideNumEl = document.getElementById('heroSlideNum');
+  const stack = document.getElementById('heroCardsTrack');
   const prevBtn = document.getElementById('heroPrev');
   const nextBtn = document.getElementById('heroNext');
 
-  if (!hero || !bgRoot || !content || !track) return;
+  if (!hero || !bgRoot || !content || !stack) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const n = SLIDES.length;
@@ -104,61 +101,40 @@ export function initHeroShowcase() {
     inactiveLayer = tmp;
   }
 
-  // --- card filmstrip (cloned 3x for seamless infinite sliding) ---
-  const cardEls = [];
-  for (let set = 0; set < CLONE_SETS; set++) {
-    SLIDES.forEach((slide, i) => {
-      const card = document.createElement('div');
-      card.className = 'hero__card';
-      card.dataset.index = String(i);
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', slide.cardLabel);
-      const img = document.createElement('img');
-      img.src = slide.card;
-      img.alt = '';
-      img.loading = 'lazy';
-      const label = document.createElement('span');
-      label.className = 'hero__card__label';
-      label.textContent = slide.cardLabel;
-      card.append(img, label);
-      track.appendChild(card);
-      cardEls.push(card);
-    });
-  }
+  // --- compact preview pair: current (large) + next (small) ---
+  const currentCard = document.createElement('div');
+  currentCard.className = 'hero__preview-card hero__preview-card--current';
+  const currentImg = document.createElement('img');
+  currentImg.alt = '';
+  currentImg.loading = 'eager';
+  const currentLabel = document.createElement('span');
+  currentLabel.className = 'hero__preview-card__label';
+  currentCard.append(currentImg, currentLabel);
 
-  const middleSetStart = n * Math.floor(CLONE_SETS / 2);
-  let trackPos = middleSetStart; // absolute position within the cloned array
+  const nextCard = document.createElement('div');
+  nextCard.className = 'hero__preview-card hero__preview-card--next';
+  nextCard.setAttribute('role', 'button');
+  nextCard.setAttribute('tabindex', '0');
+  const nextImg = document.createElement('img');
+  nextImg.alt = '';
+  nextImg.loading = 'lazy';
+  const nextLabel = document.createElement('span');
+  nextLabel.className = 'hero__preview-card__label';
+  const nextTag = document.createElement('span');
+  nextTag.className = 'hero__preview-card__tag';
+  nextTag.textContent = 'Next';
+  nextCard.append(nextImg, nextTag, nextLabel);
 
-  function cardMetrics() {
-    // offsetWidth ignores the CSS transform: scale() on active/inactive cards,
-    // unlike getBoundingClientRect() — we want the untransformed layout box.
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
-    return cardEls[0].offsetWidth + gap;
-  }
+  stack.append(currentCard, nextCard);
 
-  function renderTrack(animate) {
-    const step = cardMetrics();
-    const containerWidth = track.parentElement.clientWidth;
-    const offset = containerWidth / 2 - step / 2; // center the active card
-    const x = offset - trackPos * step;
-    if (!animate) track.style.transition = 'none';
-    track.style.transform = `translateX(${x}px)`;
-    if (!animate) {
-      void track.offsetWidth;
-      track.style.transition = '';
-    }
-    cardEls.forEach((card, i) => {
-      card.classList.toggle('is-active', i === trackPos);
-    });
-  }
-
-  // --- progress bar ---
-  function restartProgress() {
-    progressBar.classList.remove('is-animating');
-    void progressBar.offsetWidth;
-    progressBar.style.setProperty('--hero-slide-duration', `${SLIDE_DURATION}ms`);
-    if (!reduceMotion) progressBar.classList.add('is-animating');
+  function paintCards(i) {
+    const cur = SLIDES[i];
+    const upcoming = SLIDES[(i + 1) % n];
+    currentImg.src = cur.card;
+    currentLabel.textContent = cur.cardLabel;
+    nextCard.setAttribute('aria-label', `Show ${upcoming.cardLabel} slide`);
+    nextImg.src = upcoming.card;
+    nextLabel.textContent = upcoming.cardLabel;
   }
 
   // --- state ---
@@ -170,7 +146,6 @@ export function initHeroShowcase() {
     eyebrowEl.textContent = SLIDES[i].eyebrow;
     titleEl.innerHTML = SLIDES[i].title;
     descEl.textContent = SLIDES[i].desc;
-    slideNumEl.textContent = String(i + 1).padStart(2, '0');
   }
 
   function goTo(newIndex, dir) {
@@ -178,14 +153,20 @@ export function initHeroShowcase() {
     isAnimating = true;
     stopAutoplay();
 
-    trackPos += dir;
     index = newIndex;
 
     const finish = () => {
       renderContent(index);
       setBackground(index, !reduceMotion);
-      renderTrack(!reduceMotion);
-      restartProgress();
+      if (!reduceMotion) {
+        stack.classList.add('is-swapping');
+        window.setTimeout(() => {
+          paintCards(index);
+          stack.classList.remove('is-swapping');
+        }, 160);
+      } else {
+        paintCards(index);
+      }
       if (!reduceMotion) {
         content.classList.remove('is-exiting');
         content.classList.add('is-entering');
@@ -195,16 +176,13 @@ export function initHeroShowcase() {
       }
       preload(SLIDES[(index + 1) % n].bg);
 
-      // if we've drifted into an outer clone set, silently recenter once settled
-      window.setTimeout(() => {
-        const wantedPos = middleSetStart + index;
-        if (trackPos !== wantedPos) {
-          trackPos = wantedPos;
-          renderTrack(false);
-        }
-        isAnimating = false;
-        startAutoplay();
-      }, reduceMotion ? 0 : 950);
+      window.setTimeout(
+        () => {
+          isAnimating = false;
+          startAutoplay();
+        },
+        reduceMotion ? 0 : 400
+      );
     };
 
     if (reduceMotion) {
@@ -239,21 +217,12 @@ export function initHeroShowcase() {
   prevBtn.addEventListener('click', prev);
   nextBtn.addEventListener('click', next);
 
-  track.addEventListener('click', (e) => {
-    const card = e.target.closest('.hero__card');
-    if (!card) return;
-    const cardIndex = Number(card.dataset.index);
-    if (cardIndex === index) return;
-    const dir = cardIndex > index || (index === n - 1 && cardIndex === 0) ? 1 : -1;
-    goTo(cardIndex, dir);
-  });
-
-  track.addEventListener('keydown', (e) => {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    const card = e.target.closest('.hero__card');
-    if (!card) return;
-    e.preventDefault();
-    card.click();
+  nextCard.addEventListener('click', next);
+  nextCard.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      next();
+    }
   });
 
   let hoverPaused = false;
@@ -283,20 +252,11 @@ export function initHeroShowcase() {
     }
   });
 
-  window.addEventListener(
-    'resize',
-    () => {
-      renderTrack(false);
-    },
-    { passive: true }
-  );
-
   // --- initial paint ---
   renderContent(0);
   activeLayer.style.backgroundImage = `url("${SLIDES[0].bg}")`;
   activeLayer.classList.add('is-active');
   preload(SLIDES[1].bg);
-  renderTrack(false);
-  restartProgress();
+  paintCards(0);
   startAutoplay();
 }

@@ -17,9 +17,6 @@
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --fs-eyebrow: 0.7188rem;   /* 11.5px */
-  --ls-eyebrow: 0.1rem;      /* ~1.6px tracking */
-
   /* Spacing */
   --section-pad-mobile: 24px;
   --section-pad-tablet: 48px;
@@ -28,7 +25,8 @@
 
   /* Radius */
   --radius-card: 2px;
-  --radius-button: 3px;
+  --radius-button: 50px;
+  --radius-pill: 50px;
 
   /* Motion */
   --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);

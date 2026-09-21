@@ -9,31 +9,37 @@ const ITEMS = [
   {
     image: 'images/gallery/curtains-01.jpg',
     label: 'Sheer & Drape',
+    category: 'curtains',
     alt: 'Layered sheer and drape curtains with tiebacks in a Malerkotla bedroom',
   },
   {
     image: 'images/gallery/bedding-01.jpg',
     label: 'Bed Linen',
+    category: 'linen',
     alt: 'Bed linen styling with a backlit custom fabric headboard mural',
   },
   {
     image: 'images/gallery/upholstery-01.jpg',
     label: 'Upholstery',
+    category: 'upholstery',
     alt: 'Custom green velvet upholstered banquette seating',
   },
   {
     image: 'images/gallery/curtains-02.jpg',
     label: 'Tailored Curtains',
+    category: 'curtains',
     alt: 'Custom-fitted curtains dressing a living room window',
   },
   {
     image: 'images/gallery/bedding-02.jpg',
     label: 'Linen Styling',
+    category: 'linen',
     alt: 'Coordinated cushions and quilt styled on a made bed',
   },
   {
     image: 'images/gallery/upholstery-02.jpg',
     label: 'Sofa Rework',
+    category: 'upholstery',
     alt: 'Reupholstered seating in a commercial lounge setting',
   },
 ];
@@ -81,6 +87,7 @@ export function initAccordionGallery() {
   let timeline = null;
   let firstRun = true;
   let vertical = false;
+  let hoverTimer = null;
 
   root.style.setProperty('--ag-accent', CONFIG.accentColor);
   root.style.setProperty('--ag-overlay', CONFIG.overlayColor);
@@ -144,9 +151,21 @@ export function initAccordionGallery() {
     panels.push(panel);
     medias.push(media);
 
-    panel.addEventListener('mouseenter', () => setActive(i));
+    // A brief hover-intent delay so sweeping the cursor across the strip to
+    // reach a panel doesn't flip the active image along the way — clicking
+    // (or genuinely pausing on a panel) is what changes the focus.
+    panel.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimer);
+      hoverTimer = window.setTimeout(() => setActive(i), 160);
+    });
+    panel.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+    });
     panel.addEventListener('focus', () => setActive(i));
-    panel.addEventListener('click', () => setActive(i));
+    panel.addEventListener('click', () => {
+      clearTimeout(hoverTimer);
+      setActive(i);
+    });
     panel.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
@@ -176,7 +195,9 @@ export function initAccordionGallery() {
       const rot = isActive ? 0 : i < active ? tilt : -tilt;
       const drift = Math.max(-1.5, Math.min(1.5, active - i));
       const shift = drift * parallax * mediaSize * 0.06;
-      const gray = grayscale ? (isActive ? 0 : 1) : 0;
+      // Inactive panels stay only partly desaturated/dimmed (not full grayscale
+      // + heavy overlay) so the gallery reads as bright rather than dull.
+      const gray = grayscale ? (isActive ? 0 : 0.5) : 0;
 
       panel.classList.toggle('ag-panel--active', isActive);
       if (isActive) panel.setAttribute('aria-current', 'true');
@@ -204,7 +225,7 @@ export function initAccordionGallery() {
             x: shiftX,
             y: shiftY,
             '--ag-gray': gray,
-            '--ag-dim': isActive ? 0 : 0.35,
+            '--ag-dim': isActive ? 0 : 0.16,
             duration: dur,
             ease,
           },
@@ -229,7 +250,7 @@ export function initAccordionGallery() {
         panel.style.transform = `${rotAxis}(${rotDeg}deg)`;
         media.style.transform = `translate(-50%, -50%) translate(${shiftX}px, ${shiftY}px)`;
         media.style.setProperty('--ag-gray', gray);
-        media.style.setProperty('--ag-dim', isActive ? 0 : 0.35);
+        media.style.setProperty('--ag-dim', isActive ? 0 : 0.16);
         if (bar && text) {
           bar.style.opacity = isActive ? 1 : 0;
           text.style.opacity = isActive ? 1 : 0;
@@ -275,4 +296,13 @@ export function initAccordionGallery() {
   } else {
     window.addEventListener('resize', measure, { passive: true });
   }
+
+  // Let the "What We Do" service cards jump straight to their matching
+  // photo in this gallery instead of just landing on the section.
+  document.querySelectorAll('[data-gallery-category]').forEach((link) => {
+    const category = link.getAttribute('data-gallery-category');
+    const index = items.findIndex((item) => item.category === category);
+    if (index === -1) return;
+    link.addEventListener('click', () => setActive(index));
+  });
 }

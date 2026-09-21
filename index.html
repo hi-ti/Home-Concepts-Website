@@ -50,7 +50,10 @@
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="#top" class="site-header__logo">Home Concepts</a>
+    <a href="#top" class="site-header__brand" aria-label="Home Concepts — home">
+      <!-- Placeholder logo — swap images/logo.svg for the real artwork later. -->
+      <img class="site-header__logo-img" src="images/logo.svg" alt="Home Concepts">
+    </a>
 
     <nav class="site-header__nav-links" aria-label="Primary">
       <a href="#what-we-do">What We Do</a>
@@ -85,46 +88,44 @@
 
 <main id="top">
 
-  <!-- 02 Hero: cinematic timed-card showcase, content rendered by js/hero-showcase.js -->
-  <section class="hero" id="hero">
-    <div class="hero__bg" id="heroBg"></div>
-    <div class="hero__scrim"></div>
-    <div class="hero__inner">
-      <div class="hero__content" id="heroContent">
-        <span class="hero__eyebrow" id="heroEyebrow"></span>
-        <h1 class="hero__title" id="heroTitle"></h1>
-        <p class="hero__desc" id="heroDesc"></p>
-        <div class="hero__cta-row cta-group">
-          <a class="btn btn--solid" href="https://wa.me/919988205088?text=Hi%20Home%20Concepts!%20I%27m%20interested%20in%20your%20curtains%2Ffurnishing%20services%20and%20would%20like%20to%20know%20more.">Book a Visit</a>
-          <a class="btn btn--outline" href="#our-work">View our Work</a>
+  <!-- 02 Hero: image-led showcase with a compact current/next preview, content rendered by js/hero-showcase.js -->
+  <div class="hero-frame">
+    <section class="hero" id="hero">
+      <div class="hero__bg" id="heroBg"></div>
+      <div class="hero__scrim"></div>
+      <div class="hero__inner">
+        <div class="hero__content" id="heroContent">
+          <span class="hero__eyebrow" id="heroEyebrow"></span>
+          <h1 class="hero__title" id="heroTitle"></h1>
+          <p class="hero__desc" id="heroDesc"></p>
+          <div class="hero__cta-row cta-group">
+            <a class="btn btn--solid" href="https://wa.me/919988205088?text=Hi%20Home%20Concepts!%20I%27m%20interested%20in%20your%20curtains%2Ffurnishing%20services%20and%20would%20like%20to%20know%20more.">Book a Visit</a>
+            <a class="btn btn--outline" href="#our-work">View our Work</a>
+          </div>
+        </div>
+        <div class="hero__preview" id="heroCards">
+          <div class="hero__preview-stack" id="heroCardsTrack"></div>
+          <div class="hero__controls">
+            <button class="hero__nav-btn" id="heroPrev" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="hero__nav-btn" id="heroNext" aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hero__footer">
-      <div class="hero__cards" id="heroCards">
-        <div class="hero__cards-track" id="heroCardsTrack"></div>
-      </div>
-      <div class="hero__controls">
-        <button class="hero__nav-btn" id="heroPrev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="hero__nav-btn" id="heroNext" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-        <div class="hero__progress"><div class="hero__progress-bar" id="heroProgressBar"></div></div>
-        <div class="hero__slide-num" id="heroSlideNum">01</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Trust bar: stats extracted from the hero to keep the showcase uncluttered -->
-  <div class="trust-bar">
-    <div class="container trust-bar__row">
-      <div class="stat"><span class="stat__num">30+ yrs</span><span class="stat__label">Years of craft</span></div>
-      <div class="stat__divider"></div>
-      <div class="stat"><span class="stat__num">5,000+</span><span class="stat__label">Homes furnished</span></div>
-      <div class="stat__divider"></div>
-      <div class="stat"><span class="stat__num">4.8★</span><span class="stat__label">Google rating</span></div>
+    <!-- Trust bar: stats extracted from the hero to keep the showcase uncluttered -->
+    <div class="trust-bar">
+      <div class="container trust-bar__row">
+        <div class="stat"><span class="stat__num">30+ yrs</span><span class="stat__label">Years of craft</span></div>
+        <div class="stat__divider"></div>
+        <div class="stat"><span class="stat__num">5,000+</span><span class="stat__label">Homes furnished</span></div>
+        <div class="stat__divider"></div>
+        <div class="stat"><span class="stat__num">4.8★</span><span class="stat__label">Google rating</span></div>
+      </div>
     </div>
   </div>
 
@@ -136,6 +137,7 @@
         <div class="brands__logos">
           <img src="images/brands/decor.png" alt="D'Decor" loading="lazy">
           <img src="images/brands/trident.png" alt="Trident" loading="lazy">
+          <img src="images/brands/portico.png" alt="Portico" loading="lazy">
         </div>
         <p class="brands__note">Carefully selected furnishings from trusted names.</p>
       </div>
@@ -143,76 +145,91 @@
   </section>
 
   <!-- 04 What We Do -->
-  <section class="section section--cream" id="what-we-do">
+  <section class="section section--dark" id="what-we-do">
     <div class="container">
       <div class="services__head reveal">
-        <div>
-          <span class="eyebrow">Services</span>
-          <h2 class="section-heading">What we do</h2>
-        </div>
+        <h2 class="section-heading">What we do</h2>
         <p class="services__intro">Four core services, one dedicated team from measurement to install.</p>
       </div>
       <div class="services__grid">
-        <div class="card reveal">
-          <h3>Curtains (Custom)</h3>
-          <p>Stitched to your windows, in fabric you choose.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Bed &amp; Home Linen</h3>
-          <p>Sheets, quilts and cushions for every room.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Upholstery &amp; Sofa</h3>
-          <p>Re-covering and custom builds, made to last.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Installation Service</h3>
-          <p>Our own team fits everything on-site.</p>
-        </div>
+        <a class="service-card reveal" href="#our-work" data-gallery-category="curtains">
+          <div class="service-card__media">
+            <img src="images/gallery/curtains-01.jpg" alt="Sheer and drape curtains installed over a bedroom window" loading="lazy">
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__text">
+              <h3>Curtains (Custom)</h3>
+              <p>Stitched to your windows, in fabric you choose.</p>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="service-card reveal" href="#our-work" data-gallery-category="linen">
+          <div class="service-card__media">
+            <img src="images/gallery/bedding-01.jpg" alt="Styled bed with cushions and quilted linen" loading="lazy">
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__text">
+              <h3>Bed &amp; Home Linen</h3>
+              <p>Sheets, quilts and cushions for every room.</p>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="service-card reveal" href="#our-work" data-gallery-category="upholstery">
+          <div class="service-card__media">
+            <img src="images/gallery/upholstery-01.jpg" alt="Close-up of custom velvet upholstery fabric" loading="lazy">
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__text">
+              <h3>Upholstery &amp; Sofa</h3>
+              <p>Re-covering and custom builds, made to last.</p>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="service-card reveal" href="#our-work">
+          <div class="service-card__media">
+            <img src="images/gallery/curtains-03.jpg" alt="Finished curtain installation in a furnished room" loading="lazy">
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__text">
+              <h3>Installation Service</h3>
+              <p>Our own team fits everything on-site.</p>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 05 Process -->
-  <section class="section section--dark process" id="process">
-    <div class="container">
-      <div class="process__head reveal">
-        <span class="eyebrow">Our Process</span>
-        <h2 class="section-heading">From fabric to <em>finished</em> space</h2>
-      </div>
-      <ol class="process__steps">
-        <li class="step reveal">
-          <div class="step__num">1</div>
-          <h3>Choose</h3>
-          <p>Fabrics, textures, colours</p>
-        </li>
-        <li class="step reveal">
-          <div class="step__num">2</div>
-          <h3>Measure</h3>
-          <p>Precise on-site measurement</p>
-        </li>
-        <li class="step reveal">
-          <div class="step__num">3</div>
-          <h3>Customize</h3>
-          <p>Made to fit your space</p>
-        </li>
-        <li class="step reveal">
-          <div class="step__num">4</div>
-          <h3>Install</h3>
-          <p>Our team sets it up at home</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- 06 Our Work Gallery: accordion image gallery, rendered by js/accordion-gallery.js -->
-  <section class="section section--dark" id="our-work">
+  <!-- 05 Our Work Gallery: accordion image gallery, rendered by js/accordion-gallery.js -->
+  <section class="section section--cream" id="our-work">
     <div class="container">
       <div class="gallery__head reveal">
         <h2 class="section-heading">Our Best Work</h2>
       </div>
       <div class="accordion-gallery reveal" id="ourWorkGallery"></div>
       <p class="gallery__caption">A closer look at recent installations — from family homes to businesses across Malerkotla. Hover or tap a photo to bring it forward.</p>
+    </div>
+  </section>
+
+  <!-- 06 Process: scroll-driven story, rendered by js/process-story.js -->
+  <section class="section section--dark process" id="process">
+    <div class="container">
+      <div class="process__head reveal">
+        <h2 class="section-heading">From fabric to <em>finished</em> space</h2>
+      </div>
+      <div class="process-story" id="processStory"></div>
     </div>
   </section>
 
@@ -304,35 +321,34 @@
     </div>
   </section>
 
-  <!-- 08 Instagram Feed -->
-  <section class="section section--dark instagram">
+  <!-- 08 Instagram Feed: reel-style video carousel, rendered by js/instagram-reels.js -->
+  <section class="section section--cream instagram">
     <div class="container">
-      <span class="eyebrow reveal">Instagram</span>
       <h2 class="instagram__handle reveal">@home_concepts_mlk</h2>
-      <div class="instagram__grid reveal">
-        <img src="images/gallery/curtains-02.jpg" alt="" loading="lazy">
-        <img src="images/gallery/bedding-02.jpg" alt="" loading="lazy">
-        <img src="images/gallery/curtains-03.jpg" alt="" loading="lazy">
-        <img src="images/gallery/upholstery-02.jpg" alt="" loading="lazy">
-        <img src="images/gallery/curtains-01.jpg" alt="" loading="lazy">
-        <img src="images/gallery/bedding-01.jpg" alt="" loading="lazy">
+      <div class="reel-carousel reveal">
+        <button class="reel-carousel__nav reel-carousel__nav--prev" id="reelPrev" aria-label="Previous video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="reel-carousel__viewport">
+          <div class="reel-carousel__track" id="reelTrack"></div>
+        </div>
+        <button class="reel-carousel__nav reel-carousel__nav--next" id="reelNext" aria-label="Next video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
-      <a class="btn btn--outline reveal" href="https://instagram.com/home_concepts_mlk" target="_blank" rel="noopener">Follow on Instagram</a>
+      <a class="btn btn--outline-ink reveal" href="https://instagram.com/home_concepts_mlk" target="_blank" rel="noopener">Follow on Instagram</a>
     </div>
   </section>
 
   <!-- 09 Visit Us -->
-  <section class="section section--cream" id="visit-us">
+  <section class="section section--dark" id="visit-us">
     <div class="container">
-      <span class="eyebrow reveal">Visit Us</span>
-      <h2 class="section-heading reveal" style="margin-bottom:28px;">Made locally. <em>Trusted</em> locally.</h2>
+      <div class="visit__head reveal">
+        <h2 class="section-heading">Made locally. <em>Trusted</em> locally.</h2>
+      </div>
       <div class="visit__grid">
         <a class="visit__map reveal" href="https://www.google.com/maps/search/?api=1&query=Home+Concepts+College+Road+Malerkotla+Opposite+Lee+Plaza" target="_blank" rel="noopener" aria-label="Open Home Concepts location in Google Maps">
-          <svg viewBox="0 0 100 75" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="presentation">
-            <rect width="100" height="75" fill="#EAE1D0"/>
-            <path d="M50 20c-7 0-12.5 5.5-12.5 12.5C37.5 42 50 58 50 58s12.5-16 12.5-25.5C62.5 25.5 57 20 50 20z" fill="#221D19" opacity="0.55"/>
-            <circle cx="50" cy="32.5" r="5" fill="#EAE1D0"/>
-          </svg>
+          <img src="images/gallery/home%20concept%20building.jpeg" alt="Home Concepts building on College Road" width="100%" height="100%">
         </a>
         <div class="visit__details reveal">
           <h3>Home Concepts</h3>
@@ -350,7 +366,6 @@
   <section class="section section--cream faq" id="faq">
     <div class="container faq__grid">
       <div class="faq__head reveal">
-        <span class="eyebrow">FAQ</span>
         <h2 class="section-heading">Frequently asked<br>questions</h2>
       </div>
       <div class="faq__list reveal">
