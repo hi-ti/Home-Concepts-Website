@@ -7,12 +7,12 @@
 // filename and it just works, no other sizes/formats to regenerate.
 const SLIDES = [
   {
-    eyebrow: 'Living Room',
-    title: 'Sheer &amp; Drape Curtains',
-    desc: 'Layered curtains stitched to your windows, in fabric you choose.',
+    eyebrow: 'Home Office',
+    title: 'Printed Roller Blinds',
+    desc: 'Statement prints on made-to-measure roller blinds for any room.',
     bg: 'images/hero/hero-01.jpg',
     card: 'images/gallery/curtains-01.jpg',
-    cardLabel: 'Curtains',
+    cardLabel: 'Printed Blinds',
   },
   {
     eyebrow: 'Bedroom',
