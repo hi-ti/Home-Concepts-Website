@@ -1,4 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#000000"/>
-  <text x="32" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#F6C101" text-anchor="middle">Hc</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e51b12"/>
+      <stop offset="45%" stop-color="#ff3b0a"/>
+      <stop offset="75%" stop-color="#ffb400"/>
+      <stop offset="100%" stop-color="#ff6a00"/>
+    </linearGradient>
+    <linearGradient id="roof2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b90012"/>
+      <stop offset="55%" stop-color="#ff3d0b"/>
+      <stop offset="100%" stop-color="#ffc21a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff06a"/>
+      <stop offset="45%" stop-color="#ffc21a"/>
+      <stop offset="100%" stop-color="#ff9d00"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".28"/>
+    </filter>
+  </defs>
+
+  <!-- Transparent favicon background -->
+
+  <!-- House roof silhouette -->
+  <path
+    d="M58 300
+       L246 128
+       L338 180
+       L372 168
+       L454 183
+       L454 274
+       L414 274
+       L354 236
+       L318 204
+       L246 160
+       L104 300 Z"
+    fill="url(#roof2)"
+    filter="url(#shadow)"/>
+
+  <!-- Bright upper roof edge -->
+  <path
+    d="M58 300 L246 128 L338 180 L372 168 L454 183"
+    fill="none"
+    stroke="url(#gold)"
+    stroke-width="15"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <!-- Inner red roof accent -->
+  <path
+    d="M86 294 L246 153 L323 198 L352 186"
+    fill="none"
+    stroke="#e21b12"
+    stroke-width="13"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <!-- Curved right roof/flap -->
+  <path
+    d="M352 186
+       C370 199 385 207 404 213
+       L404 257
+       C416 265 431 270 454 274
+       L414 274
+       L354 236
+       L318 204 Z"
+    fill="url(#roof)"
+    opacity=".96"/>
+
+  <!-- Four-pane window -->
+  <g fill="url(#gold)" filter="url(#shadow)">
+    <rect x="226" y="218" width="25" height="25" rx="2"/>
+    <rect x="261" y="218" width="25" height="25" rx="2"/>
+    <rect x="226" y="253" width="25" height="25" rx="2"/>
+    <rect x="261" y="253" width="25" height="25" rx="2"/>
+  </g>
 </svg>

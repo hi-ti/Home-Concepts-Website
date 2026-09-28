@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home Concepts — Custom Curtains, Bed Linen &amp; Upholstery in Malerkotla</title>
-<meta name="description" content="Home Concepts (by Super Handloom Store) crafts custom curtains, bed &amp; home linen, and upholstery for homes across Malerkotla, Punjab — 30+ years of craft, 5,000+ homes furnished. Visit our showroom on College Road or message us on WhatsApp.">
+<meta name="description" content="Home Concepts (by Super Handloom Store) crafts custom curtains, bed &amp; home linen, and upholstery for homes across Malerkotla, Punjab — 45+ years of craft, 5,000+ homes furnished. Visit our showroom on College Road or message us on WhatsApp.">
 
 <meta property="og:type" content="business.business">
 <meta property="og:title" content="Home Concepts — Custom Curtains, Bed Linen &amp; Upholstery in Malerkotla">
@@ -26,7 +26,7 @@
   "name": "Home Concepts",
   "alternateName": "Super Handloom Store",
   "image": "images/hero/hero-01.jpg",
-  "telephone": "+919988205088",
+  "telephone": "+91 99882 05088",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "College Road, Opposite Lee Plaza",
@@ -34,12 +34,20 @@
     "addressRegion": "Punjab",
     "addressCountry": "IN"
   },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-    "opens": "10:00",
-    "closes": "20:00"
-  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "10:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday"],
+      "opens": "11:00",
+      "closes": "18:00"
+    }
+  ],
   "sameAs": [
     "https://instagram.com/home_concepts_mlk"
   ]
@@ -51,8 +59,7 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a href="#top" class="site-header__brand" aria-label="Home Concepts — home">
-      <!-- Placeholder logo — swap images/logo.svg for the real artwork later. -->
-      <img class="site-header__logo-img" src="images/logo.svg" alt="Home Concepts">
+      <img class="site-header__logo-img" src="images/logo.png" alt="Home Concepts">
     </a>
 
     <nav class="site-header__nav-links" aria-label="Primary">
@@ -120,24 +127,44 @@
     <!-- Trust bar: stats extracted from the hero to keep the showcase uncluttered -->
     <div class="trust-bar">
       <div class="container trust-bar__row">
-        <div class="stat"><span class="stat__num">30+ yrs</span><span class="stat__label">Years of craft</span></div>
+        <div class="stat"><span class="stat__num">45+ yrs</span><span class="stat__label">Years of craft</span></div>
         <div class="stat__divider"></div>
         <div class="stat"><span class="stat__num">5,000+</span><span class="stat__label">Homes furnished</span></div>
         <div class="stat__divider"></div>
-        <div class="stat"><span class="stat__num">4.8★</span><span class="stat__label">Google rating</span></div>
+        <div class="stat"><span class="stat__num">4.9★</span><span class="stat__label">Google rating</span></div>
       </div>
     </div>
   </div>
 
-  <!-- 03 Brands We Carry -->
+  <!-- 03 Instagram Feed: reel-style video carousel, rendered by js/instagram-reels.js -->
+  <section class="section section--cream instagram">
+    <div class="container">
+      <h2 class="instagram__handle reveal">@home_concepts_mlk</h2>
+      <div class="reel-carousel reveal">
+        <button class="reel-carousel__nav reel-carousel__nav--prev" id="reelPrev" aria-label="Previous video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="reel-carousel__viewport">
+          <div class="reel-carousel__track" id="reelTrack"></div>
+        </div>
+        <button class="reel-carousel__nav reel-carousel__nav--next" id="reelNext" aria-label="Next video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <a class="btn btn--outline-ink reveal" href="https://instagram.com/home_concepts_mlk" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- 04 Brands We Carry -->
   <section class="section section--cream brands">
     <div class="container">
       <div class="brands__head reveal">
         <h2 class="section-heading">Trusted brands</h2>
         <div class="brands__logos">
           <img src="images/brands/decor.png" alt="D'Decor" loading="lazy">
-          <img src="images/brands/trident.png" alt="Trident" loading="lazy">
           <img src="images/brands/portico.png" alt="Portico" loading="lazy">
+          <img src="images/brands/sleepwell.png" alt="Sleepwell" loading="lazy">
+          <img src="images/brands/monte-carlo.png" alt="Monte Carlo" loading="lazy">
         </div>
         <p class="brands__note">Carefully selected furnishings from trusted names.</p>
       </div>
@@ -245,59 +272,80 @@
     <div class="reviews__carousel reveal">
       <div class="container reviews__carousel-inner">
         <div class="reviews__track" id="reviewsTrack">
-          <!-- TODO: replace placeholder quotes/names with real Google reviews supplied by the business -->
           <article class="review-card">
             <span class="review-card__badge">Google Review</span>
-            <blockquote>&ldquo;Great quality fabric and quick installation. The curtains completely transformed our living room.&rdquo;</blockquote>
+            <blockquote>&ldquo;Best in the town. Should go for shopping, good variety. Soft spoken staff and owner.&rdquo;</blockquote>
             <footer class="review-card__author">
               <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <span class="review-card__who">
-                <span class="review-card__name">Customer name</span>
-                <span class="review-card__role">Homeowner, Malerkotla</span>
+                <span class="review-card__name">Harminder Singh</span>
+                <span class="review-card__role">Malerkotla</span>
               </span>
             </footer>
           </article>
           <article class="review-card">
             <span class="review-card__badge">Google Review</span>
-            <blockquote>&ldquo;Beautiful curtains, exactly what we wanted for the living room. The team helped us pick the right fabric.&rdquo;</blockquote>
+            <blockquote>&ldquo;Good dealing of all. Super variety of products. Durable goods. Affordable prices.&rdquo;</blockquote>
             <footer class="review-card__author">
               <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <span class="review-card__who">
-                <span class="review-card__name">Customer name</span>
-                <span class="review-card__role">Homeowner, Malerkotla</span>
+                <span class="review-card__name">Kamal Modi</span>
+                <span class="review-card__role">Malerkotla</span>
               </span>
             </footer>
           </article>
           <article class="review-card">
             <span class="review-card__badge">Google Review</span>
-            <blockquote>&ldquo;Professional team, tidy work and they finished on schedule. Very happy with the bed linen too.&rdquo;</blockquote>
+            <blockquote>&ldquo;Beautiful variety with genuine prices... cooperative staff. Dealing very good.&rdquo;</blockquote>
             <footer class="review-card__author">
               <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <span class="review-card__who">
-                <span class="review-card__name">Customer name</span>
-                <span class="review-card__role">Homeowner, Malerkotla</span>
+                <span class="review-card__name">Vikas Arora</span>
+                <span class="review-card__role">Malerkotla</span>
               </span>
             </footer>
           </article>
           <article class="review-card">
             <span class="review-card__badge">Google Review</span>
-            <blockquote>&ldquo;Excellent service from measurement to installation. Home Concepts made the whole process effortless.&rdquo;</blockquote>
+            <blockquote>&ldquo;Perfect store n good n stylish variety.&rdquo;</blockquote>
             <footer class="review-card__author">
               <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <span class="review-card__who">
-                <span class="review-card__name">Customer name</span>
-                <span class="review-card__role">Homeowner, Malerkotla</span>
+                <span class="review-card__name">Nitin Bansal</span>
+                <span class="review-card__role">Malerkotla</span>
               </span>
             </footer>
           </article>
           <article class="review-card">
             <span class="review-card__badge">Google Review</span>
-            <blockquote>&ldquo;Our sofa looks brand new after reupholstering. Great craftsmanship and fair pricing.&rdquo;</blockquote>
+            <blockquote>&ldquo;Very good place for shopping.&rdquo;</blockquote>
             <footer class="review-card__author">
               <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <span class="review-card__who">
-                <span class="review-card__name">Customer name</span>
-                <span class="review-card__role">Homeowner, Malerkotla</span>
+                <span class="review-card__name">Mohd Dilshad</span>
+                <span class="review-card__role">Malerkotla</span>
+              </span>
+            </footer>
+          </article>
+          <article class="review-card">
+            <span class="review-card__badge">Google Review</span>
+            <blockquote>&ldquo;Best store of the town.&rdquo;</blockquote>
+            <footer class="review-card__author">
+              <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+              <span class="review-card__who">
+                <span class="review-card__name">Pushap Jain</span>
+                <span class="review-card__role">Malerkotla</span>
+              </span>
+            </footer>
+          </article>
+          <article class="review-card">
+            <span class="review-card__badge">Google Review</span>
+            <blockquote>&ldquo;Excellent.&rdquo;</blockquote>
+            <footer class="review-card__author">
+              <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+              <span class="review-card__who">
+                <span class="review-card__name">Inderjit Singh</span>
+                <span class="review-card__role">Malerkotla</span>
               </span>
             </footer>
           </article>
@@ -314,29 +362,10 @@
     <div class="container">
       <div class="reviews__summary-badge reveal">
         <span class="stars">★★★★★</span>
-        <span>4.8 average rating</span>
+        <span>4.9 average rating</span>
         <span class="reviews__summary-divider" aria-hidden="true"></span>
         <span><!-- TODO: confirm live review count with business -->120+ reviews</span>
       </div>
-    </div>
-  </section>
-
-  <!-- 08 Instagram Feed: reel-style video carousel, rendered by js/instagram-reels.js -->
-  <section class="section section--cream instagram">
-    <div class="container">
-      <h2 class="instagram__handle reveal">@home_concepts_mlk</h2>
-      <div class="reel-carousel reveal">
-        <button class="reel-carousel__nav reel-carousel__nav--prev" id="reelPrev" aria-label="Previous video">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <div class="reel-carousel__viewport">
-          <div class="reel-carousel__track" id="reelTrack"></div>
-        </div>
-        <button class="reel-carousel__nav reel-carousel__nav--next" id="reelNext" aria-label="Next video">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-      <a class="btn btn--outline-ink reveal" href="https://instagram.com/home_concepts_mlk" target="_blank" rel="noopener">Follow on Instagram</a>
     </div>
   </section>
 
@@ -348,14 +377,14 @@
       </div>
       <div class="visit__grid">
         <a class="visit__map reveal" href="https://www.google.com/maps/search/?api=1&query=Home+Concepts+College+Road+Malerkotla+Opposite+Lee+Plaza" target="_blank" rel="noopener" aria-label="Open Home Concepts location in Google Maps">
-          <img src="images/gallery/home%20concept%20building.jpeg" alt="Home Concepts building on College Road" width="100%" height="100%">
+          <img src="images/gallery/home-concept-building.jpg" alt="Home Concepts building on College Road" width="100%" height="100%">
         </a>
         <div class="visit__details reveal">
           <h3>Home Concepts</h3>
           <address>College Road, Malerkotla, Opposite Lee Plaza</address>
-          <a class="visit__phone" href="tel:+919988205088">9988205088</a>
+          <a class="visit__phone" href="tel:+919988205088">+91 99882 05088</a>
           <span class="visit__hours-label">Showroom Hours</span>
-          <p class="visit__hours">Mon–Sat, 10:00 AM – 8:00 PM</p>
+          <p class="visit__hours">Mon–Sat, 10:00 AM – 9:00 PM<br>Sun, 11:00 AM – 6:00 PM</p>
           <a class="btn btn--solid" href="https://www.google.com/maps/search/?api=1&query=Home+Concepts+College+Road+Malerkotla+Opposite+Lee+Plaza" target="_blank" rel="noopener">Get Directions</a>
         </div>
       </div>
@@ -427,7 +456,7 @@
         <a href="#top" class="site-header__logo">Home Concepts</a>
         <span class="site-footer__tagline">by Super Handloom Store</span>
         <span class="site-footer__address">College Road, Malerkotla, Opposite Lee Plaza</span>
-        <a class="site-footer__phone" href="tel:+919988205088">9988205088</a>
+        <a class="site-footer__phone" href="tel:+919988205088">+91 99882 05088</a>
       </div>
       <div class="site-footer__col">
         <h4>Explore</h4>

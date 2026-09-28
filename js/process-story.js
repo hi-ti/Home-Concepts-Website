@@ -10,28 +10,28 @@ const PROCESS_STEPS = [
     title: 'Choose',
     description: 'Explore fabrics, textures and colours that complement your space.',
     image: 'images/gallery/upholstery-01.jpg',
-    alt: 'Close-up of upholstery fabric texture and colour',
+    alt: 'Green velvet upholstered booth seating in a commercial interior',
   },
   {
     number: '02',
     title: 'Measure',
     description: 'We take precise on-site measurements so everything fits exactly as it should.',
     image: 'images/gallery/curtains-02.jpg',
-    alt: 'Curtain track and window ready for fitting',
+    alt: 'Finished pinch-pleat curtains dressing a bedroom window',
   },
   {
     number: '03',
     title: 'Customize',
     description: 'Your chosen fabric is shaped and finished specifically for your space.',
     image: 'images/gallery/curtains-03.jpg',
-    alt: 'Custom curtain trim and detail work',
+    alt: 'Sheer and drape curtains with tiebacks finished for a large window',
   },
   {
     number: '04',
     title: 'Install',
     description: 'Our team handles the final installation and leaves your space ready to enjoy.',
     image: 'images/gallery/curtains-01.jpg',
-    alt: 'Finished curtain installation in a bedroom',
+    alt: 'Custom printed roller blind installed in a home office',
   },
 ];
 

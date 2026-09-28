@@ -8,9 +8,9 @@
 const ITEMS = [
   {
     image: 'images/gallery/curtains-01.jpg',
-    label: 'Sheer & Drape',
+    label: 'Printed Blinds',
     category: 'curtains',
-    alt: 'Layered sheer and drape curtains with tiebacks in a Malerkotla bedroom',
+    alt: 'Custom printed roller blind featuring a peacock and palace motif',
   },
   {
     image: 'images/gallery/bedding-01.jpg',

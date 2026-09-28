@@ -854,17 +854,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 48px;
-  flex-wrap: wrap;
+  gap: 20px;
+  flex-wrap: nowrap;
   margin: 24px 0 16px;
 }
 
 .brands__logos img {
-  height: 28px;
+  height: 18px;
   width: auto;
+  flex-shrink: 0;
+}
+
+@media (min-width: 480px) {
+  .brands__logos {
+    gap: 32px;
+  }
+
+  .brands__logos img {
+    height: 24px;
+  }
 }
 
 @media (min-width: 768px) {
+  .brands__logos {
+    gap: 48px;
+  }
+
   .brands__logos img {
     height: 34px;
   }
